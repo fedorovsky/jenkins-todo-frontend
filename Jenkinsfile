@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Stop container') {
             steps {
-                sh 'docker stop todo-fontend || true'
+                sh 'docker stop todo-frontend || true'
             }
         }
         stage('Remove image') {
