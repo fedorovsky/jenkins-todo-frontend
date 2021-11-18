@@ -1,5 +1,5 @@
-def IMAGE_NAME = 'todo-fontend'
-def CONTAINER_NAME = 'todo-fontend' 
+def IMAGE_NAME = 'todo-frontend'
+def CONTAINER_NAME = 'todo-frontend' 
 
 pipeline {
     agent any
