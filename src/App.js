@@ -2,7 +2,7 @@
 function App() {
   return (
     <div>
-      React
+      <h1>Todo frontend</h1>
     </div>
   );
 }
