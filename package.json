@@ -38,7 +38,6 @@
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
   },
-  "homepage": "https://fedorovsky.github.io/code-react-typescript/",
   "browserslist": {
     "production": [
       ">0.2%",
