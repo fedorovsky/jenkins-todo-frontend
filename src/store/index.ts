@@ -4,6 +4,8 @@ import { createStore } from 'redux-dynamic-modules';
 import { routerModule } from 'modules/routerModule';
 import { CounterFirstModule } from 'CounterFirst/redux/types';
 import { CounterSecondModule } from 'CounterSecond/redux/types';
+import { AuthModule } from 'Auth/redux/types';
+import { getAuthModule } from 'Auth/redux/getAuthModule';
 
 // rehydrate state on app start
 const initialState = {};
@@ -22,15 +24,15 @@ const store = createStore(
     }),
   },
   rootModule,
+  getAuthModule(),
   routerModule,
 );
 
 export type DynamicModules = CounterFirstModule & CounterSecondModule;
 
-// export type StaticModules = {};
-// export type RootState = DynamicModules & StaticModules;
+export type StaticModules = AuthModule;
 
-export type RootState = DynamicModules;
+export type RootState = DynamicModules & StaticModules;
 
 export type AppDispatch = typeof store.dispatch;
 
