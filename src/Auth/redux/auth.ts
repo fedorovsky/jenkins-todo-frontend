@@ -1,5 +1,6 @@
 import { Reducer } from 'redux';
 import { createSelector } from 'reselect';
+import { ThunkAction } from 'redux-thunk';
 import { RootState } from 'store';
 import { AuthState } from './types';
 
@@ -59,3 +60,35 @@ interface RegisterSuccess {
   type: typeof ACTION.REGISTER_SUCCESS;
 }
 type ActionType = RegisterRequest | RegisterSuccess;
+
+type ThunkResult<R> = ThunkAction<R, RootState, void, ActionType>;
+
+export const register =
+  (user: { email: string; password: string }): ThunkResult<void> =>
+  async () => {
+    const data = await fetch('/api/registration', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((r) => r.json());
+  };
+
+export const login =
+  (user: { email: string; password: string }): ThunkResult<void> =>
+  async () => {
+    const data = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((r) => r.json());
+  };
+
+export const refresh = (): ThunkResult<void> => async (dispatch) => {
+  const data = await fetch('/api/refresh', {
+    credentials: 'include',
+  }).then((r) => r.json());
+};
